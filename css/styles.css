@@ -10,32 +10,63 @@ body {
   line-height: 1.6;
 }
 header {
-  background-image: url(/images/);
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 20px;
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
   text-align: center;
+  height: 300px; /* Same as your background images */
+  color: white;
+  font-family: 'Arial', sans-serif; /* Default font */
+  position: relative;
+}
+/* Wrapper to center text inside the header */
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
+/* Font styling */
+.header-content h1 {
+  font-size: 36px; /* Adjust as needed */
+  font-family: 'Poppins', sans-serif; /* Example: Change font */
+  margin: 0;
+}
+
+.header-content p {
+  font-size: 20px; /* Adjust as needed */
+  font-family: 'Roboto', sans-serif; /* Example: Different font for paragraph */
+  margin-top: 10px;
+}
 .home header {
-  background-image: url(/images/index-header-bg.jpg) no-repeat center center;
+  background-image: url("../images/index-header-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
 }
 
 .alpha header {
-  background-image: url(/images/alpha-header-bg.jpg) no-repeat center center;
+  background-image: url("../images/alpha-header-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
 }
 
 .beta header {
-  background-image: url(/images/beta-header-bg.jpg) no-repeat center center;
+  background-image: url("../images/beta-header-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
 }
 
 header h1 {
+  
   margin-bottom: 10px;
 }
 nav {
