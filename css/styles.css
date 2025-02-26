@@ -17,6 +17,23 @@ header {
   text-align: center;
 }
 
+.home header {
+  background-image: url(/images/index-header-bg.jpg) no-repeat center center;
+  background-size: cover;
+  height: 300px;
+}
+
+.alpha header {
+  background-image: url(/images/alpha-header-bg.jpg) no-repeat center center;
+  background-size: cover;
+  height: 300px;
+}
+
+.beta header {
+  background-image: url(/images/beta-header-bg.jpg) no-repeat center center;
+  background-size: cover;
+  height: 300px;
+}
 
 header h1 {
   margin-bottom: 10px;
