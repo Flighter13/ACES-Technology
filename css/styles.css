@@ -65,10 +65,56 @@ header {
   height: 300px;
 }
 
-header h1 {
-  
-  margin-bottom: 10px;
+.nexgen header {
+  background-image: url("../images/nexgen-header-bg2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
 }
+
+/* Headings */
+h1, h2, h3 {
+  text-align: left;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  text-align: left;
+}
+
+/* Lists */
+ul {
+  list-style-type: disc; /* Ensure bullets appear */
+  margin-left: 20px;
+  padding-left: 20px;
+  text-align: left; /* Align list text to the left */
+}
+
+ul ul {
+  list-style-type: circle; /* Different bullet style for nested lists */
+  margin-left: 20px;
+}
+
 nav {
   background-color: #333;
   overflow: hidden;
@@ -76,16 +122,18 @@ nav {
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  text-align: left;
 }
 nav ul li {
   margin: 0 15px;
+  text-align: left;
 }
 nav ul li a {
   color: #fff;
   text-decoration: none;
   padding: 14px 20px;
   display: block;
+  text-align: left;
 }
 nav ul li a:hover,
 nav ul li a.active {
