@@ -5,7 +5,7 @@ body, h1, h2, p, ul, li, a, header, nav, footer {
   font-family: Arial, sans-serif;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #808080;
   color: #333;
   line-height: 1.6;
 }
@@ -53,7 +53,7 @@ nav ul li a.active {
   margin-bottom: 10px;
 }
 footer {
-  background-color: #1a1a1a;
+  background-color: #d3d3d3;
   color: #fff;
   text-align: center;
   padding: 10px;
