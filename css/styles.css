@@ -5,7 +5,7 @@ body, h1, h2, p, ul, li, a, header, nav, footer {
   font-family: Arial, sans-serif;
 }
 body {
-  background-color: #808080;
+  background-color: #a9a9a9;
   color: #333;
   line-height: 1.6;
 }
@@ -61,6 +61,6 @@ footer {
   margin-top: 20px;
 }
 footer a {
-  color: #fff;
+  color: black;
   text-decoration: underline;
 }
