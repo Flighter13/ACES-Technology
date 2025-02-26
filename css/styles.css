@@ -10,11 +10,14 @@ body {
   line-height: 1.6;
 }
 header {
+  background-image: url(/images/);
   background-color: #1a1a1a;
   color: #fff;
   padding: 20px;
   text-align: center;
 }
+
+
 header h1 {
   margin-bottom: 10px;
 }
