@@ -163,3 +163,104 @@ footer a {
   color: black;
   text-decoration: underline;
 }
+
+
+@media screen and (max-width: 768px) {
+  /* Adjust container width */
+  .container {
+      width: 95%;
+      padding: 10px;
+  }
+
+  /* Make header text smaller */
+  h1 {
+      font-size: 1.5em;
+  }
+
+  h2 {
+      font-size: 1.3em;
+  }
+
+  h3 {
+      font-size: 1.1em;
+  }
+
+  /* Ensure paragraphs fit nicely */
+  p {
+      font-size: 1em;
+      line-height: 1.5;
+  }
+
+  /* Adjust navigation */
+  nav ul {
+      flex-direction: column;
+      text-align: center;
+      padding: 0;
+  }
+
+  nav ul li {
+      margin: 5px 0;
+  }
+
+  nav ul li a {
+      padding: 10px;
+      display: block;
+      font-size: 1.1em;
+  }
+
+  /* Make lists easier to read */
+  ul {
+      margin-left: 10px;
+      padding-left: 15px;
+  }
+
+  /* Adjust header height for smaller screens */
+  header {
+      height: 200px;
+  }
+}
+
+/* Hide menu by default on mobile */
+#nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #333;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50px;
+}
+
+#nav-menu li {
+  text-align: center;
+  margin: 0;
+}
+
+#nav-menu li a {
+  display: block;
+  padding: 10px;
+  color: white;
+}
+
+/* Show menu when active */
+#nav-menu.active {
+  display: flex;
+}
+
+/* Style menu button */
+#menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Show button only on small screens */
+@media screen and (max-width: 768px) {
+  #menu-toggle {
+      display: block;
+  }
+}
