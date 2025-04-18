@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("text/home.txt") // Fetch the text file
+    fetch("text/home.md") // Fetch the text file
         .then(response => response.text())
         .then(data => {
             document.getElementById("home-description").innerHTML = `<p>${data}</p>`;
