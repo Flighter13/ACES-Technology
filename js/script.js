@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("text/home.md") // Fetch the text file
+    fetch("text/home.md")
         .then(response => response.text())
         .then(data => {
-            document.getElementById("home-description").innerHTML = `<p>${data}</p>`;
+            const html = marked.parse(data); // Convert Markdown to HTML
+            document.getElementById("home-description").innerHTML = html;
         })
         .catch(error => {
             console.error("Error loading the description:", error);
