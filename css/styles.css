@@ -73,6 +73,14 @@ header {
   height: 300px;
 }
 
+.purik header {
+  background-image: url("../images/purik-header-bg.jpg"); /* You can update this image path */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+
 /* Headings */
 h1, h2, h3 {
   text-align: left;
