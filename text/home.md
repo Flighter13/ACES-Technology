@@ -1,13 +1,13 @@
 # ACES Technology
 
-**ACES Technology** (Air Combat Engineering Systems Technology) is a student-led research and development initiative dedicated to exploring and analyzing cutting-edge advancements in military aerospace systems, with a focus on combat aircraft and their supporting technologies.
+**ACES Technology** (Air Combat Engineering Systems Technology) is a research and development initiative dedicated to exploring and analyzing cutting-edge advancements in military aerospace systems, with a focus on combat aircraft and their supporting technologies.
 
 ## Mission
 
-Our mission is to bridge the gap between academic research, engineering education, and real-world defense innovation by:
+Our mission is to bridge the gap between academic research and real-world defense innovation by:
 - Investigating emerging technologies in air combat systems
 - Building functional engineering prototypes and demos
-- Hosting public conferences to promote open discourse
+- Hosting asynchronous webinars to discuss discovered insights and to promote open discourse
 - Providing insights for engineers, defense professionals, and policy researchers
 
 ## Areas of Focus
@@ -27,7 +27,7 @@ A modular, low-cost sensor suite designed to demonstrate real-time embedded syst
 - Web-based dashboard for live data visualization
 
 ### NexGen Air Battlespace
-An interactive 2D visualization project showcasing current and near-future air combat platforms, strategic interactions, and emerging technologies from government and industry sources.
+An interactive 2D visualization project showcasing current and near-future air combat platforms, strategic interactions, and emerging technologies from government and industry sources. This project displays the various networks of platforms and technologies, providing details of the characteristics of the entities, how they are deployed in the air combat space, and how they relate to each other in sub-networks.
 
 ### ACES Tech Conferences
 We have organized two major events:
