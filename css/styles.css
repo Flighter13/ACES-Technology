@@ -171,6 +171,17 @@ footer a {
   color: black;
   text-decoration: underline;
 }
+figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.9em;
+  margin-top: 5px;
+  color: #444;
+}
 
 
 
