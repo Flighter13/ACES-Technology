@@ -83,6 +83,46 @@
 <img src="images/main2.jpg" alt="Full System Layout" style="width:100%; max-width:800px; display:block; margin: 0 auto;">
 <figcaption style="text-align: center; font-style: italic; margin-top: 10px;">Fully connected prototype with IR, radar, DHT11, and LCD display modules.</figcaption>
 
+<h2>Modular Firmware Architecture</h2>
+<p>
+  The Purik Sensor System is developed using a modular firmware architecture, making it both maintainable and extensible. Key subsystems—WiFi setup, sensor configuration, and HTTP response handling—are divided into discrete source files and header definitions.
+</p>
+
+<ul>
+  <li><strong>Sensor Configuration (<code>SensorConfig.h</code> / <code>.cpp</code>)</strong> handles initialization and measurement routines for the HC-SR04 ultrasonic sensor, Sharp IR sensor, DHT11 temperature/humidity module, and a directional servo. This abstraction allows new sensors to be added with minimal code modification.</li>
+
+  <li><strong>WiFi Initialization (<code>WiFiSetup.h</code> / <code>.cpp</code>)</strong> manages the Arduino Uno R4 WiFi board’s connection to a local network. It also launches a local HTTP server on port 80 and reports status simultaneously to both the Serial monitor and an I2C LCD display using the <code>DUAL_PRINT</code> macro from <code>DualPrint.h</code>.</li>
+
+  <li><strong>Dashboard Communication (<code>Dashboard.h</code> / <code>.cpp</code>)</strong> processes each incoming HTTP client request by:
+    <ol>
+      <li>Rotating the ultrasonic sensor to a new angle,</li>
+      <li>Collecting fresh sensor readings,</li>
+      <li>Assembling a JSON response containing radar angle/distance, IR ADC values, temperature, and humidity,</li>
+      <li>Closing the connection with a fully self-contained response.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>
+  This modular setup provides clarity during debugging and supports future upgrades like NRF24L01 RF modules or additional sensor integrations.
+</p>
+
+  <h2>Python-Based Front-End Dashboard</h2>
+<p>
+  A powerful feature of the Purik system is its companion Python dashboard (<code>data.py</code>), which enables live data visualization over WiFi. Written with <code>Tkinter</code> for the interface and <code>Matplotlib</code> for plotting, the dashboard pulls JSON-formatted sensor readings from the Arduino board every ~25ms and renders them in real time.
+</p>
+
+<p><strong>Live displays include:</strong></p>
+<ul>
+  <li>A polar radar sweep showing ultrasonic distances across 0°–180°.</li>
+  <li>A scrolling time-series chart of the IR sensor’s analog distance estimates.</li>
+  <li>Dual plots for temperature (°F) and humidity (%) from the DHT11 module.</li>
+  <li>Instantaneous value readouts for all sensors in a summary panel.</li>
+</ul>
+
+<p>
+  The IR sensor’s voltage is converted to inches using a mathematical model (<code>A / (voltage - B)</code>) for better interpretation. The modular layout and use of <code>requests</code>, <code>numpy</code>, and <code>matplotlib</code> libraries make this dashboard both extensible and highly interactive—ideal for live demos, education, and diagnostics.
+</p>
 
 
   <!-- Footer -->
