@@ -44,85 +44,91 @@
         <p>Future iterations of the Purik Sensor System will support LiDAR integration, RF communication via NRF24L01 modules, and machine learning data analysis. These upgrades will further enhance the platform’s ability to model collaborative combat aircraft technologies in next-gen air battlespace scenarios.</p>
     </section>
 </div>
-<h2>Hardware Components and Integration</h2>
-<p>The Purik Sensor System includes a modular array of sensors connected to the Arduino Uno R4 WiFi. Below are labeled photos from the experimental testbed.</p>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 10px;">
-
-  <figure style="width: 30%;">
-    <img src="images/radar.jpg" alt="Ultrasonic Radar and Servo Mount" style="width: 100%; height: auto;">
-    <figcaption>HC-SR04 ultrasonic sensor mounted on a micro servo for directional radar scanning.</figcaption>
-  </figure>
-
-  <figure style="width: 30%;">
-    <img src="images/sharp_ir.jpg" alt="IR Proximity Sensor" style="width: 100%; height: auto;">
-    <figcaption>Sharp IR proximity sensor for analog distance approximation.</figcaption>
-  </figure>
-
-  <figure style="width: 30%;">
-    <img src="images/dht11.jpg" alt="DHT11 Sensor Module" style="width: 100%; height: auto;">
-    <figcaption>DHT11 temperature and humidity module mounted mid-fuselage in final build.</figcaption>
-  </figure>
-
-  <figure style="width: 30%;">
-    <img src="images/lcd.jpg" alt="LCD Display" style="width: 100%; height: auto;">
-    <figcaption>I2C LCD showing real-time system booting and status messages.</figcaption>
-  </figure>
-
-  <figure style="width: 30%;">
-    <img src="images/arduino.jpg" alt="Arduino Uno R4 WiFi Board" style="width: 100%; height: auto;">
-    <figcaption>Primary board for data acquisition, processing, and HTTP hosting: Arduino Uno R4 WiFi (Renesas core, ESP32 bridge).</figcaption>
-  </figure>
-
-</div>
-<h2>System Integration Overview</h2>
-<p>This development follows a phased integration strategy, as outlined in the internal test memo (XTI-1, Jan 2025). The final configuration includes 5+ sensor nodes linked via a central hub, with expansion paths toward RF communication and LiDAR signal analysis.</p>
-
-<p><a href="pdf/XTI-1.pdf" target="_blank">Download the full integration planning document (PDF)</a></p>
-
-<img src="images/main2.jpg" alt="Full System Layout" style="width:100%; max-width:800px; display:block; margin: 0 auto;">
-<figcaption style="text-align: center; font-style: italic; margin-top: 10px;">Fully connected prototype with IR, radar, DHT11, and LCD display modules.</figcaption>
-
-<h2>Modular Firmware Architecture</h2>
-<p>
-  The Purik Sensor System is developed using a modular firmware architecture, making it both maintainable and extensible. Key subsystems—WiFi setup, sensor configuration, and HTTP response handling—are divided into discrete source files and header definitions.
-</p>
-
-<ul>
-  <li><strong>Sensor Configuration (<code>SensorConfig.h</code> / <code>.cpp</code>)</strong> handles initialization and measurement routines for the HC-SR04 ultrasonic sensor, Sharp IR sensor, DHT11 temperature/humidity module, and a directional servo. This abstraction allows new sensors to be added with minimal code modification.</li>
-
-  <li><strong>WiFi Initialization (<code>WiFiSetup.h</code> / <code>.cpp</code>)</strong> manages the Arduino Uno R4 WiFi board’s connection to a local network. It also launches a local HTTP server on port 80 and reports status simultaneously to both the Serial monitor and an I2C LCD display using the <code>DUAL_PRINT</code> macro from <code>DualPrint.h</code>.</li>
-
-  <li><strong>Dashboard Communication (<code>Dashboard.h</code> / <code>.cpp</code>)</strong> processes each incoming HTTP client request by:
-    <ol>
-      <li>Rotating the ultrasonic sensor to a new angle,</li>
-      <li>Collecting fresh sensor readings,</li>
-      <li>Assembling a JSON response containing radar angle/distance, IR ADC values, temperature, and humidity,</li>
-      <li>Closing the connection with a fully self-contained response.</li>
-    </ol>
-  </li>
-</ul>
-
-<p>
-  This modular setup provides clarity during debugging and supports future upgrades like NRF24L01 RF modules or additional sensor integrations.
-</p>
-
-  <h2>Python-Based Front-End Dashboard</h2>
-<p>
-  A powerful feature of the Purik system is its companion Python dashboard (<code>data.py</code>), which enables live data visualization over WiFi. Written with <code>Tkinter</code> for the interface and <code>Matplotlib</code> for plotting, the dashboard pulls JSON-formatted sensor readings from the Arduino board every ~25ms and renders them in real time.
-</p>
-
-<p><strong>Live displays include:</strong></p>
-<ul>
-  <li>A polar radar sweep showing ultrasonic distances across 0°–180°.</li>
-  <li>A scrolling time-series chart of the IR sensor’s analog distance estimates.</li>
-  <li>Dual plots for temperature (°F) and humidity (%) from the DHT11 module.</li>
-  <li>Instantaneous value readouts for all sensors in a summary panel.</li>
-</ul>
-
-<p>
-  The IR sensor’s voltage is converted to inches using a mathematical model (<code>A / (voltage - B)</code>) for better interpretation. The modular layout and use of <code>requests</code>, <code>numpy</code>, and <code>matplotlib</code> libraries make this dashboard both extensible and highly interactive—ideal for live demos, education, and diagnostics.
-</p>
+    <section class="content-section">
+        <h2>Hardware Components and Integration</h2>
+        <p>The Purik Sensor System includes a modular array of sensors connected to the Arduino Uno R4 WiFi. Below are labeled photos from the experimental testbed.</p>
+        
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 10px;">
+        
+          <figure style="width: 30%;">
+            <img src="images/radar.jpg" alt="Ultrasonic Radar and Servo Mount" style="width: 100%; height: auto;">
+            <figcaption>HC-SR04 ultrasonic sensor mounted on a micro servo for directional radar scanning.</figcaption>
+          </figure>
+        
+          <figure style="width: 30%;">
+            <img src="images/sharp_ir.jpg" alt="IR Proximity Sensor" style="width: 100%; height: auto;">
+            <figcaption>Sharp IR proximity sensor for analog distance approximation.</figcaption>
+          </figure>
+        
+          <figure style="width: 30%;">
+            <img src="images/dht11.jpg" alt="DHT11 Sensor Module" style="width: 100%; height: auto;">
+            <figcaption>DHT11 temperature and humidity module mounted mid-fuselage in final build.</figcaption>
+          </figure>
+        
+          <figure style="width: 30%;">
+            <img src="images/lcd.jpg" alt="LCD Display" style="width: 100%; height: auto;">
+            <figcaption>I2C LCD showing real-time system booting and status messages.</figcaption>
+          </figure>
+        
+          <figure style="width: 30%;">
+            <img src="images/arduino.jpg" alt="Arduino Uno R4 WiFi Board" style="width: 100%; height: auto;">
+            <figcaption>Primary board for data acquisition, processing, and HTTP hosting: Arduino Uno R4 WiFi (Renesas core, ESP32 bridge).</figcaption>
+          </figure>
+        
+      </div>
+    </section>
+    <section class="content-section">
+        <h2>System Integration Overview</h2>
+        <p>This development follows a phased integration strategy, as outlined in the internal test memo (XTI-1, Jan 2025). The final configuration includes 5+ sensor nodes linked via a central hub, with expansion paths toward RF communication and LiDAR signal analysis.</p>
+        
+        <p><a href="pdf/XTI-1.pdf" target="_blank">Download the full integration planning document (PDF)</a></p>
+        
+        <img src="images/main2.jpg" alt="Full System Layout" style="width:100%; max-width:800px; display:block; margin: 0 auto;">
+        <figcaption style="text-align: center; font-style: italic; margin-top: 10px;">Fully connected prototype with IR, radar, DHT11, and LCD display modules.</figcaption>
+    </section>
+    <section class="content-section">
+      <h2>Modular Firmware Architecture</h2>
+      <p>
+        The Purik Sensor System is developed using a modular firmware architecture, making it both maintainable and extensible. Key subsystems—WiFi setup, sensor configuration, and HTTP response handling—are divided into discrete source files and header definitions.
+      </p>
+      
+      <ul>
+        <li><strong>Sensor Configuration (<code>SensorConfig.h</code> / <code>.cpp</code>)</strong> handles initialization and measurement routines for the HC-SR04 ultrasonic sensor, Sharp IR sensor, DHT11 temperature/humidity module, and a directional servo. This abstraction allows new sensors to be added with minimal code modification.</li>
+      
+        <li><strong>WiFi Initialization (<code>WiFiSetup.h</code> / <code>.cpp</code>)</strong> manages the Arduino Uno R4 WiFi board’s connection to a local network. It also launches a local HTTP server on port 80 and reports status simultaneously to both the Serial monitor and an I2C LCD display using the <code>DUAL_PRINT</code> macro from <code>DualPrint.h</code>.</li>
+      
+        <li><strong>Dashboard Communication (<code>Dashboard.h</code> / <code>.cpp</code>)</strong> processes each incoming HTTP client request by:
+          <ol>
+            <li>Rotating the ultrasonic sensor to a new angle,</li>
+            <li>Collecting fresh sensor readings,</li>
+            <li>Assembling a JSON response containing radar angle/distance, IR ADC values, temperature, and humidity,</li>
+            <li>Closing the connection with a fully self-contained response.</li>
+          </ol>
+        </li>
+      </ul>
+      
+      <p>
+        This modular setup provides clarity during debugging and supports future upgrades like NRF24L01 RF modules or additional sensor integrations.
+      </p>
+    </section>
+    <section class="content-section">
+      <h2>Python-Based Front-End Dashboard</h2>
+      <p>
+        A powerful feature of the Purik system is its companion Python dashboard (<code>data.py</code>), which enables live data visualization over WiFi. Written with <code>Tkinter</code> for the interface and <code>Matplotlib</code> for plotting, the dashboard pulls JSON-formatted sensor readings from the Arduino board every ~25ms and renders them in real time.
+      </p>
+      
+      <p><strong>Live displays include:</strong></p>
+      <ul>
+        <li>A polar radar sweep showing ultrasonic distances across 0°–180°.</li>
+        <li>A scrolling time-series chart of the IR sensor’s analog distance estimates.</li>
+        <li>Dual plots for temperature (°F) and humidity (%) from the DHT11 module.</li>
+        <li>Instantaneous value readouts for all sensors in a summary panel.</li>
+      </ul>
+      
+      <p>
+        The IR sensor’s voltage is converted to inches using a mathematical model (<code>A / (voltage - B)</code>) for better interpretation. The modular layout and use of <code>requests</code>, <code>numpy</code>, and <code>matplotlib</code> libraries make this dashboard both extensible and highly interactive—ideal for live demos, education, and diagnostics.
+      </p>
+    </section>
 
 
   <!-- Footer -->
